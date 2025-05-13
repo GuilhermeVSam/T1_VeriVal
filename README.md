@@ -13,6 +13,7 @@ Este trabalho consiste desenvolver um codigo a partir de um dos problemas dispon
 - Partições
 - Valor-limite
 - Contratos
+- Propriedades
 
 ### Desafio escolhido
 - [O Mar não está para Peixe](https://judge.beecrowd.com/pt/problems/view/2393)
