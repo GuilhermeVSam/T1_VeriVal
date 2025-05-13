@@ -61,7 +61,7 @@
 						<arguments>
 							<argument>-ea</argument>
 							<argument>-classpath</argument> <classpath />
-							<argument>br.pucrs.edu.AreaPescaContratos</argument>
+							<argument>br.pucrs.edu.Main</argument>
 						</arguments>
 					</configuration>
 				</plugin>
