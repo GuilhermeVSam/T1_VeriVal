@@ -34,6 +34,7 @@ public class Main {
             boolean[][] mar = new boolean[101][101];
 
             for (Rede rede : redes) {
+                validarRede(rede);
                 for (int x = rede.xi; x < rede.xf; x++) {
                     for (int y = rede.yi; y < rede.yf; y++) {
                         mar[x][y] = true;
@@ -51,6 +52,16 @@ public class Main {
             }
 
             return areaAproveitada;
+        }
+
+        public static void validarRede(Rede rede) {
+            assert rede.xi >= 1 : "Xi deve ser no mínimo 1";
+            assert rede.xi <= rede.xf : "Xi deve ser <= Xf";
+            assert rede.xf <= 100 : "Xf deve ser no máximo 100";
+
+            assert rede.yi >= 1 : "Yi deve ser no mínimo 1";
+            assert rede.yi <= rede.yf : "Yi deve ser <= Yf";
+            assert rede.yf <= 100 : "Yf deve ser no máximo 100";
         }
 
         // Classe de apoio para representar uma rede de pesca
