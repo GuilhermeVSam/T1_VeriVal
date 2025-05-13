@@ -9,27 +9,22 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         List<AreaPesca.Rede> redes = new ArrayList<>();
 
-        System.out.print("Quantas redes foram lançadas ao mar?: ");
-        int N = scanner.nextInt();
+        int N = Integer.parseInt(scanner.nextLine());
         assert N >= 1 : "Deve haver ao menos uma rede no mar";
         assert N <= 100 : "Devem haver no máximo 100 redes no mar";
 
         for (int i = 0; i < N; i++) {
-            System.out.printf("Informe os valores xi, xf, yi, yf da rede %d:%n", i + 1);
-            System.out.print("xi: ");
-            int xi = scanner.nextInt();
-            System.out.print("xf: ");
-            int xf = scanner.nextInt();
-            System.out.print("yi: ");
-            int yi = scanner.nextInt();
-            System.out.print("yf: ");
-            int yf = scanner.nextInt();
+            String[] coord = scanner.nextLine().split("\\s+");
+            int xi = Integer.parseInt(coord[0]);
+            int xf = Integer.parseInt(coord[1]);
+            int yi = Integer.parseInt(coord[2]);
+            int yf = Integer.parseInt(coord[3]);
 
             redes.add(new AreaPesca.Rede(xi, xf, yi, yf));
         }
 
         int area = AreaPesca.calcularAreaAproveitada(redes);
-        System.out.println("Área total aproveitada do mar: " + area);
+        System.out.println(area);
         scanner.close();
     }
 
