@@ -51,6 +51,9 @@ public class Main {
                 }
             }
 
+            assert areaAproveitada >= 0 : "A área aproveitada deve ser >= 0";
+            assert areaAproveitada <= 10000 : "A área aproveitada não pode exceder 10000";
+
             return areaAproveitada;
         }
 

@@ -30,7 +30,6 @@ public class AreaPescaPropertyTest {
     void areaNuncaNegativa(@ForAll("redesValidas") List<Main.AreaPesca.Rede> redes) {
         int area = Main.AreaPesca.calcularAreaAproveitada(redes);
         Assertions.assertTrue(area >= 0);
-        System.out.println(area);
         Assertions.assertTrue(area <= 10_000);
     }
 }
