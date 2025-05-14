@@ -56,7 +56,7 @@ public class AreaPescaPartitionTest {
 
     @Test
     public void testRedeForaDosLimites() {
-        Rede redeInvalida = new Rede(0, 2, 1, 2);
+        Rede redeInvalida = new Rede(0, 110, 1, 2);
         Executable exec = () -> AreaPesca.calcularAreaAproveitada(Collections.singletonList(redeInvalida));
         AssertionError e = assertThrows(AssertionError.class, exec);
         assertTrue(e.getMessage().contains("Xi deve ser no mínimo"));
