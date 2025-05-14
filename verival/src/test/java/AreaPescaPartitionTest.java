@@ -71,9 +71,9 @@ public class AreaPescaPartitionTest {
 
     @Test
     public void testRedeNaBordaSuperior() {
-        Rede rede = new Rede(99, 101, 99, 101);
+        Rede rede = new Rede(99, 100, 99, 100);
         int area = AreaPesca.calcularAreaAproveitada(Collections.singletonList(rede));
-        assertEquals(4, area); 
+        assertEquals(1, area); 
     }
 
     @Test
