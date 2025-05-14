@@ -19,8 +19,9 @@ public class Main {
             int xf = Integer.parseInt(coord[1]);
             int yi = Integer.parseInt(coord[2]);
             int yf = Integer.parseInt(coord[3]);
-
-            redes.add(new AreaPesca.Rede(xi, xf, yi, yf));
+            AreaPesca.Rede rede = new AreaPesca.Rede(xi, xf, yi, yf);
+            AreaPesca.validarRede(rede);
+            redes.add(rede);
         }
 
         int area = AreaPesca.calcularAreaAproveitada(redes);
@@ -34,7 +35,6 @@ public class Main {
             boolean[][] mar = new boolean[101][101];
 
             for (Rede rede : redes) {
-                validarRede(rede);
                 for (int x = rede.xi; x < rede.xf; x++) {
                     for (int y = rede.yi; y < rede.yf; y++) {
                         mar[x][y] = true;
