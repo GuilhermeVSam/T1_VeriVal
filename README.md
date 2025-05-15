@@ -17,3 +17,20 @@ Este trabalho consiste desenvolver um codigo a partir de um dos problemas dispon
 
 ### Desafio escolhido
 - [O Mar não está para Peixe](https://judge.beecrowd.com/pt/problems/view/2393)
+
+
+## Ferramentas e tecnologias utilizadas
+Java 21  
+JUnit 5.12.2  
+JQwik 1.9.2
+
+### Como executar testes:
+Execute no terminal os seguintes comandos:
+```
+$ sdk install java 21.0.7-amzn
+$ cd Verival
+$ mvn clean compile
+$ mvn test
+```
+
+### [Documentação de desenvolvimento do algoritmo e testes](https://github.com/GuilhermeVSam/T1_VeriVal/issues)
