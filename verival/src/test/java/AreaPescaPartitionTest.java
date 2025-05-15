@@ -1,86 +1,86 @@
 import br.pucrs.edu.Main.AreaPesca;
 import br.pucrs.edu.Main.AreaPesca.Rede;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.function.Executable;
-
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class AreaPescaPartitionTest {
 
+    // Rede com area maior 0
     @Test
-    public void testAreaComum() {
-        List<Rede> redes = Collections.singletonList(new Rede(1, 2, 1, 2));
-        int area = AreaPesca.calcularAreaAproveitada(redes);
-        assertEquals(1, area);
+    public void testRedeValidaAreaSimples() {
+        Rede rede = new Rede(1, 3, 1, 3);
+        int area = AreaPesca.calcularAreaAproveitada(List.of(rede));
+        assertEquals(4, area);
     }
 
+    // Rede com area igual 0
     @Test
-    public void testRedesNaoSobrepostas() {
-        List<Rede> redes = Arrays.asList(
-                new Rede(1, 3, 1, 3),
-                new Rede(3, 5, 3, 5)  
-        );
-        int area = AreaPesca.calcularAreaAproveitada(redes);
-        assertEquals(8, area);
-    }
-
-    @Test
-    public void testRedesSobrepostas() {
-        List<Rede> redes = Arrays.asList(
-                new Rede(1, 4, 1, 4), 
-                new Rede(3, 6, 3, 6)  
-        );
-        int area = AreaPesca.calcularAreaAproveitada(redes);
-        assertEquals(17, area); 
-    }
-
-    @Test
-    public void testRedeInvalida() {
-        Rede redeInvalida = new Rede(5, 3, 1, 2);
-        Executable exec = () -> AreaPesca.calcularAreaAproveitada(Collections.singletonList(redeInvalida));
-        AssertionError e = assertThrows(AssertionError.class, exec);
-        assertTrue(e.getMessage().contains("Xi deve ser <="));
-    }
-
-    @Test
-    public void testRedeInvalidaYiMaiorQueYf() {
-        Rede redeInvalida = new Rede(1, 2, 5, 3);
-        Executable exec = () -> AreaPesca.calcularAreaAproveitada(Collections.singletonList(redeInvalida));
-        AssertionError e = assertThrows(AssertionError.class, exec);
-        assertTrue(e.getMessage().contains("Yi deve ser <="));
-    }
-
-    @Test
-    public void testRedeForaDosLimites() {
-        Rede redeInvalida = new Rede(0, 110, 1, 2);
-        Executable exec = () -> AreaPesca.calcularAreaAproveitada(Collections.singletonList(redeInvalida));
-        AssertionError e = assertThrows(AssertionError.class, exec);
-        assertTrue(e.getMessage().contains("Xi deve ser no mínimo"));
-    }
-
-    @Test
-    public void testRedeNaBordaInferior() {
-        Rede rede = new Rede(1, 2, 1, 2);
-        int area = AreaPesca.calcularAreaAproveitada(Collections.singletonList(rede));
-        assertEquals(1, area);
-    }
-
-    @Test
-    public void testRedeNaBordaSuperior() {
-        Rede rede = new Rede(99, 100, 99, 100);
-        int area = AreaPesca.calcularAreaAproveitada(Collections.singletonList(rede));
-        assertEquals(1, area); 
-    }
-
-    @Test
-    public void testRedeComAreaZero() {
-        Rede rede = new Rede(5, 5, 5, 5); 
-        int area = AreaPesca.calcularAreaAproveitada(Collections.singletonList(rede));
+    public void testRedeComAreaZero_XiIgualXf() {
+        Rede rede = new Rede(5, 5, 1, 10);
+        int area = AreaPesca.calcularAreaAproveitada(List.of(rede));
         assertEquals(0, area);
     }
 
+    // Duas redes sem sobreposição
+    @Test
+    public void testDuasRedesSemSobreposicao() {
+        Rede r1 = new Rede(1, 3, 1, 3); // 4
+        Rede r2 = new Rede(4, 6, 4, 6); // 4
+        int area = AreaPesca.calcularAreaAproveitada(List.of(r1, r2));
+        assertEquals(8, area);
+    }
+
+    // Duas redes com sobreposição parcial
+    @Test
+    public void testDuasRedesComSobreposicao() {
+        Rede r1 = new Rede(1, 4, 1, 4); 
+        Rede r2 = new Rede(3, 6, 3, 6); 
+        int area = AreaPesca.calcularAreaAproveitada(List.of(r1, r2));
+        assertEquals(17, area); 
+    }
+
+    // Rede ocupando todo o mar
+    @Test
+    public void testRedePreencheMarCompleto() {
+        Rede rede = new Rede(1, 100, 1, 100);
+        int area = AreaPesca.calcularAreaAproveitada(List.of(rede));
+        assertEquals(9801, area);
+    }
+
+    // Xi menor que 1
+    @Test
+    public void testRedeComXiInvalido() {
+        Rede rede = new Rede(0, 10, 1, 10);
+        assertThrows(AssertionError.class, () -> AreaPesca.calcularAreaAproveitada(List.of(rede)));
+    }
+
+    // Xf maior que 100
+    @Test
+    public void testRedeComXfMaiorQue100() {
+        Rede rede = new Rede(90, 101, 1, 10);
+        assertThrows(AssertionError.class, () -> AreaPesca.calcularAreaAproveitada(List.of(rede)));
+    }
+
+    // Xi maior que Xf
+    @Test
+    public void testRedeComXiMaiorQueXf() {
+        Rede rede = new Rede(10, 5, 1, 10);
+        assertThrows(AssertionError.class, () -> AreaPesca.calcularAreaAproveitada(List.of(rede)));
+    }
+
+    // Yi menor que 1
+    @Test
+    public void testRedeComYiInvalido() {
+        Rede rede = new Rede(1, 10, 0, 10);
+        assertThrows(AssertionError.class, () -> AreaPesca.calcularAreaAproveitada(List.of(rede)));
+    }
+
+    // Yf maior que 100
+    @Test
+    public void testRedeComYfMaiorQue100() {
+        Rede rede = new Rede(1, 10, 90, 101);
+        assertThrows(AssertionError.class, () -> AreaPesca.calcularAreaAproveitada(List.of(rede)));
+    }
 }
