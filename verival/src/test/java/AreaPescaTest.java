@@ -5,7 +5,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class AreaPescaPartitionTest {
+public class AreaPescaPartitTest {
 
     // Rede com area maior 0
     @Test
