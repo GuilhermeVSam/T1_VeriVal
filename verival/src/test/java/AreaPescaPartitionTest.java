@@ -38,15 +38,15 @@ public class AreaPescaPartitionTest {
         Rede r1 = new Rede(1, 4, 1, 4); 
         Rede r2 = new Rede(3, 6, 3, 6); 
         int area = AreaPesca.calcularAreaAproveitada(List.of(r1, r2));
-        assertEquals(14, area); 
+        assertEquals(17, area); 
     }
 
     // Rede ocupando todo o mar
     @Test
     public void testRedePreencheMarCompleto() {
-        Rede rede = new Rede(1, 101, 1, 101);
+        Rede rede = new Rede(1, 100, 1, 100);
         int area = AreaPesca.calcularAreaAproveitada(List.of(rede));
-        assertEquals(10000, area);
+        assertEquals(9801, area);
     }
 
     // Xi menor que 1
