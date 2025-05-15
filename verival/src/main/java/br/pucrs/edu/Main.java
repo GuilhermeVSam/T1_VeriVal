@@ -35,6 +35,7 @@ public class Main {
             boolean[][] mar = new boolean[101][101];
 
             for (Rede rede : redes) {
+                AreaPesca.validarRede(rede);
                 for (int x = rede.xi; x < rede.xf; x++) {
                     for (int y = rede.yi; y < rede.yf; y++) {
                         mar[x][y] = true;

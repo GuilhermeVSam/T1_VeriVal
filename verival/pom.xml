@@ -44,6 +44,9 @@
 			<plugin>
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>3.5.3</version>
+				<configuration>
+					<argLine>-ea</argLine>
+				</configuration>
 			</plugin>
 			<plugin>
 					<groupId>org.codehaus.mojo</groupId>

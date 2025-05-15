@@ -19,7 +19,7 @@ public class AreaPescaPropertyTest {
             Arbitraries.integers().between(1, 100),
             Arbitraries.integers().between(1, 100)
         ).as((xi, xf, yi, yf) ->
-            new Main.AreaPesca.Rede(xi, xf, yi, yf)
+            new Main.AreaPesca.Rede(Math.min(xi, xf), Math.max(xi,xf), Math.min(yi,yf), Math.max(yi,yf))
         )
         .list()
         .ofMinSize(1)
