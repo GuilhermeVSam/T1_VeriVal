@@ -1,5 +1,7 @@
 # T1_VeriVal
 
+[![Java CI with Maven](https://github.com/GuilhermeVSam/T1_VeriVal/actions/workflows/maven.yml/badge.svg)](https://github.com/GuilhermeVSam/T1_VeriVal/actions/workflows/maven.yml)
+
 ### Este repositorio é destinado ao desenvolvimento e execução do trabalho 1 da diciplina de Verificação e Validação de Software da instituição Pontifícia Universidade Católica do Rio Grande do Sul (PUCRS).
 
 ### Integrantes: 
