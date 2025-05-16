@@ -30,7 +30,7 @@ JQwik 1.9.2
 Execute no terminal os seguintes comandos:
 ```
 $ sdk install java 21.0.7-amzn
-$ cd Verival
+$ cd verival
 $ mvn clean compile
 $ mvn test
 ```
